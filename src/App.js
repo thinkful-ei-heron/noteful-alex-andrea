@@ -7,7 +7,6 @@ import NoteView from './NoteView';
 import './dummy-store'
 import './css/App.css'
 import UserContext from './UserContext';
-import dummyStore from './dummy-store';
 
 class App extends Component {
 
@@ -16,6 +15,15 @@ class App extends Component {
     folders: [],
   }
   
+  deleteNote= noteId =>{
+    const newNotes = this.state.notes.filter(item =>
+      item.id !== noteId
+      )
+      this.setState({
+        notes: newNotes
+      })
+  }
+
   componentDidMount() {
     const folderUrl= 'http://localhost:9090/folders';
     const notesUrl='http://localhost:9090/notes';
@@ -30,18 +38,27 @@ class App extends Component {
       .then(res => this.setState({
         folders:res,
       }))
-    
-    // this.setState({
-    //   notes: dummyStore.notes,
-    //   folders: dummyStore.folders
-    // })
+      .catch(error => console.log(error.message));
+
+      fetch(notesUrl)
+      .then(res => {
+        if(!res.ok){
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(res => this.setState({
+        notes: res,
+      }))
+      .catch(error => console.log(error.message));
   }
 
   render() {
     return (
       <UserContext.Provider value={{
         notes: this.state.notes,
-        folders: this.state.folders
+        folders: this.state.folders,
+        deleteRequest: this.deleteNote,
       }}>
         <main className='App'>
           <Route path='' component={Header} />
