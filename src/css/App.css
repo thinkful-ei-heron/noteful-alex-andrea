@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.folder {
+  text-decoration: none;
+  color: hotpink;
+  background-color: yellow;
+}
+
+.note {
+  text-decoration: none;
+}
+
+.main-elements {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.notelist {
+  text-align: center;
+  width: 80%;
+}
+
+.active p{
+  background-color: green;
+  
+}
