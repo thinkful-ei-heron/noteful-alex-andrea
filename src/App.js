@@ -17,10 +17,24 @@ class App extends Component {
   }
   
   componentDidMount() {
-    this.setState({
-      notes: dummyStore.notes,
-      folders: dummyStore.folders
-    })
+    const folderUrl= 'http://localhost:9090/folders';
+    const notesUrl='http://localhost:9090/notes';
+
+    fetch(folderUrl)
+      .then(res => {
+        if(!res.ok){
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(res => this.setState({
+        folders:res,
+      }))
+    
+    // this.setState({
+    //   notes: dummyStore.notes,
+    //   folders: dummyStore.folders
+    // })
   }
 
   render() {
