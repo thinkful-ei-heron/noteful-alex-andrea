@@ -4,7 +4,6 @@ import Mainpage from './Mainpage';
 import Header from './Header';
 import FolderView from './FolderView';
 import NoteView from './NoteView';
-import AddFolder from './AddFolder';
 import './dummy-store'
 import './css/App.css'
 import UserContext from './UserContext';
@@ -23,13 +22,6 @@ class App extends Component {
       this.setState({
         notes: newNotes
       })
-  }
-
-  addFolder = folderName =>{
-    const newFolder= this.state.folders.append()
-    this.setState({
-      folders: newFolder
-    });
   }
 
   componentDidMount() {
