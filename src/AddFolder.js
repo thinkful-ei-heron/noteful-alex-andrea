@@ -9,7 +9,7 @@ export default class AddFolder extends React.Component {
         this.props.addFolder(addedFolder);
         e.target['folder-name'].value= '';
     }
-
+//comment
     render() {
         return (
             <form className= 'add-folder' onSubmit={e => this.handleSubmit(e)}>

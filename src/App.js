@@ -29,7 +29,7 @@ class App extends Component {
     const newFolder= this.state.folders.append()
     this.setState({
       folders: newFolder
-    })
+    });
   }
 
   componentDidMount() {

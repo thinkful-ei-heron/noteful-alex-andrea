@@ -12,6 +12,8 @@ export default class Folder extends Component {
         'content-type': 'application/json'
       }
     })
+
+    //test
     .then(res => {
       if(!res.ok){
         throw new Error(res.status)
